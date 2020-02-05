@@ -4,7 +4,7 @@
 #                                                                                                                      #
 #&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#
 
-init_distances = function(distance, diss, jeu) {
+init_distances = function(distance, diss, game) {
   if(is.null(distance))
     distanceM = 7
   if(!is.null(distance))
@@ -20,27 +20,27 @@ init_distances = function(distance, diss, jeu) {
     
     if (distanceM == 1) 
     {
-      md = dist(jeu, method="euclidean")	# "dist" function computes and returns the distance matrix computed by using the specified distance measure to compute the distances between the rows of a data matrix.
+      md = dist(game, method="euclidean")	# "dist" function computes and returns the distance matrix computed by using the specified distance measure to compute the distances between the rows of a data matrix.
     }
     if (distanceM == 2) 
     {
-      md = dist(jeu, method="maximum")	
+      md = dist(game, method="maximum")	
     }
     if (distanceM == 3) 
     {
-      md = dist(jeu, method="manhattan")	
+      md = dist(game, method="manhattan")	
     }
     if (distanceM == 4) 
     {
-      md = dist(jeu, method="canberra")	
+      md = dist(game, method="canberra")	
     }
     if (distanceM == 5) 
     {
-      md = dist(jeu, method="binary")	
+      md = dist(game, method="binary")	
     }
     if (distanceM == 6) 
     {
-      md = dist(jeu, method="minkowski")	
+      md = dist(game, method="minkowski")	
     }
     
     if (distanceM == 7) 

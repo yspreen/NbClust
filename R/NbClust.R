@@ -51,12 +51,12 @@ NbClust = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.
 
   else
   {
-    jeu1 = as.matrix(data)
-    numberObsBefore = dim(jeu1)[1]
-    jeu = na.omit(jeu1) # returns the object with incomplete cases removed
-    nn = numberObsAfter = dim(jeu)[1]
-    pp = dim(jeu)[2]
-    TT = t(jeu)%*%jeu
+    game1 = as.matrix(data)
+    numberObsBefore = dim(game1)[1]
+    game = na.omit(game1) # returns the object with incomplete cases removed
+    nn = numberObsAfter = dim(game)[1]
+    pp = dim(game)[2]
+    TT = t(game)%*%game
     sizeEigenTT = length(eigen(TT)$value)
     eigenValues = eigen(TT/(nn-1))$value
 
@@ -83,7 +83,7 @@ NbClust = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.
   }
 
   source("distances.R")
-  md = init_distances(distance, diss, jeu)
+  md = init_distances(distance, diss, game)
 
   source("methods.R")
   init_methods_res = init_methods(max_nc, min_nc, method, md)
@@ -92,7 +92,7 @@ NbClust = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.
   resCritical = init_methods_res[[3]]
 
   source("main.R")
-  main_res = main(min_nc, max_nc, method, hc, nn, jeu, indice, res, md, TT, ss, vv, pi, pp, resCritical)
+  main_res = main(min_nc, max_nc, method, hc, nn, game, indice, res, md, TT, ss, vv, pi, pp, resCritical)
   res = main_res[[1]]
 
   source("estimate_n.R")
@@ -102,5 +102,5 @@ NbClust = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.
   attach(ncs_and_indices)
 
   source("display_results.R")
-  results.final = display_results(res, nc, indice, resCritical, min.nc, max.nc, method, hc, best.nc)
+  results.final = display_results(res, nc, indice, resCritical, min.nc, max.nc, method, hc, best.nc, game)
 }
