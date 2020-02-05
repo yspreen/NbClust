@@ -1,8 +1,11 @@
 source("clustering.R")
 
 main = function(min_nc, max_nc, method, hc, nn, game, indice, res, md, TT, ss, vv, pp, resCritical) {
+  seconds_clust = 0
+  seconds_index = 0
   for (nc in min_nc:max_nc)
   {
+    t = Sys.time()
     clusters = clustering(method, game, nc, max_nc, hc, nn)
     cl0 = clusters$cl0
     cl1 = clusters$cl1
@@ -10,7 +13,9 @@ main = function(min_nc, max_nc, method, hc, nn, game, indice, res, md, TT, ss, v
     clall = clusters$clall
     clall1 = clusters$clall1
     clmax = clusters$clmax
+    seconds_clust = seconds_clust + difftime(Sys.time(), t, units = "secs")
 
+    t = Sys.time()
     j = table(cl1)  # table uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
     s = sum(j==1)    
     j2 = table(cl2)
@@ -283,6 +288,11 @@ main = function(min_nc, max_nc, method, hc, nn, game, indice, res, md, TT, ss, v
       res[nc-min_nc+1,29] = NA
       res[nc-min_nc+1,30] = NA
     }
+    seconds_index = seconds_index + difftime(Sys.time(), t, units = "secs")
   }
+  cat(seconds_clust)
+  cat("\n")
+  cat(seconds_index)
+  cat("\n")
   return(list(res=res))
 }
