@@ -1,28 +1,6 @@
 main = function(min_nc, max_nc, method, hc, nn, jeu, indice, res, md, TT, ss, vv, pi, pp, resCritical) {
   for (nc in min_nc:max_nc)
-  {  
-    
-    if (any(method == 1) || (method == 2) || (method == 3) || (method == 4) || 
-        (method == 5) || (method == 6) || (method == 7)||(method == 9)) 
-    {
-      cl1 = cutree(hc, k=nc)
-      cl2 = cutree(hc, k=nc+1)
-      clall = cbind(cl1, cl2)
-      clmax = cutree(hc, k=max_nc) 
-      
-      
-      if (nc >= 2)
-      {
-        cl0 = cutree(hc, k=nc-1)
-        clall1 = cbind(cl0, cl1, cl2)
-      }
-      if (nc == 1)
-      {
-        cl0 = rep(NA,nn)
-        clall1 = cbind(cl0, cl1, cl2)
-      }
-    }
-    
+  {
     if (method == 8) 
     {
       set.seed(1)
@@ -50,7 +28,22 @@ main = function(min_nc, max_nc, method, hc, nn, jeu, indice, res, md, TT, ss, vv
       {
         stop("Number of clusters must be higher than 2")
       }
-      
+    } else {
+      cl1 = cutree(hc, k=nc)
+      cl2 = cutree(hc, k=nc+1)
+      clall = cbind(cl1, cl2)
+      clmax = cutree(hc, k=max_nc)
+
+      if (nc >= 2)
+      {
+        cl0 = cutree(hc, k=nc-1)
+        clall1 = cbind(cl0, cl1, cl2)
+      }
+      if (nc == 1)
+      {
+        cl0 = rep(NA,nn)
+        clall1 = cbind(cl0, cl1, cl2)
+      }
     }
     
     j = table(cl1)  # table uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
