@@ -2,7 +2,7 @@
 ########################                Displaying results             #########################################
 ######################################################################################################################
 
-display_results <- function(res, nc, indice, resCritical, min.nc, max.nc) {
+display_results <- function(res, nc, indice, resCritical, min.nc, max.nc, method, hc, bestnc) {
   if (indice < 31)
   {
     res <- res[,c(indice)]
@@ -146,12 +146,12 @@ display_results <- function(res, nc, indice, resCritical, min.nc, max.nc) {
     if (any(method == 1) || (method == 2) || (method == 3) || (method == 4) || 
         (method == 5) || (method == 6) || (method == 7) || (method == 9)) 
       
-      partition<- cutree(hc, k=best.nc)
+      partition<- cutree(hc, k=bestnc)
     
     else
     {
       set.seed(1)
-      partition<-kmeans(jeu,best.nc)$cluster
+      partition<-kmeans(jeu,bestnc)$cluster
     }
     
   }

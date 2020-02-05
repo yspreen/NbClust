@@ -4,7 +4,7 @@
 
 
 
-estimate_n <- function(indice, min_nc, max_nc) {
+estimate_n <- function(indice, min_nc, max_nc, res) {
   nc.KL<-indice.KL<-0
   if (any(indice == 1) || (indice == 31) || (indice == 32)) 
   {  
