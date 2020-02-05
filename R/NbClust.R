@@ -1,4 +1,9 @@
 source("definitions.R")
+source("distances.R")
+source("methods.R")
+source("main.R")
+source("estimate_n.R")
+source("display_results.R")
 
 NbClust = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.nc=15, method =NULL, index = "all", alphaBeale = 0.1)
 {
@@ -82,25 +87,20 @@ NbClust = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.
     }
   }
 
-  source("distances.R")
   md = init_distances(distance, diss, game)
 
-  source("methods.R")
   init_methods_res = init_methods(max_nc, min_nc, method, md)
   hc = init_methods_res[[1]]
   res = init_methods_res[[2]]
   resCritical = init_methods_res[[3]]
 
-  source("main.R")
   main_res = main(min_nc, max_nc, method, hc, nn, game, indice, res, md, TT, ss, vv, pi, pp, resCritical)
   res = main_res[[1]]
 
-  source("estimate_n.R")
   estimate_n_res = estimate_n(indice, min_nc, max_nc, res)
   ncs_and_indices = estimate_n_res[[1]]
   best.nc = estimate_n_res[[2]]
   attach(ncs_and_indices)
 
-  source("display_results.R")
   results.final = display_results(res, nc, indice, resCritical, min.nc, max.nc, method, hc, best.nc, game)
 }
