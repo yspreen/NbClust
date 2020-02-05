@@ -1,6 +1,6 @@
 source("clustering.R")
 
-main = function(min_nc, max_nc, method, hc, nn, game, indice, res, md, TT, ss, vv, pi, pp, resCritical) {
+main = function(min_nc, max_nc, method, hc, nn, game, indice, res, md, TT, ss, vv, pp, resCritical) {
   for (nc in min_nc:max_nc)
   {
     clusters = clustering(method, game, nc, max_nc, hc, nn)
