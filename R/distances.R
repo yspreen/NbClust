@@ -4,11 +4,11 @@
 #                                                                                                                      #
 #&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#
 
-init_distances <- function(distance, diss, jeu) {
+init_distances  =  function(distance, diss, jeu) {
   if(is.null(distance))
-    distanceM<-7
+    distanceM = 7
   if(!is.null(distance))
-    distanceM <- pmatch(distance, c("euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"))
+    distanceM  =  pmatch(distance, c("euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"))
   
   if (is.na(distanceM)) 
   {
@@ -20,27 +20,27 @@ init_distances <- function(distance, diss, jeu) {
     
     if (distanceM == 1) 
     {
-      md <- dist(jeu, method="euclidean")	# "dist" function computes and returns the distance matrix computed by using the specified distance measure to compute the distances between the rows of a data matrix.
+      md  =  dist(jeu, method="euclidean")	# "dist" function computes and returns the distance matrix computed by using the specified distance measure to compute the distances between the rows of a data matrix.
     }
     if (distanceM == 2) 
     {
-      md <- dist(jeu, method="maximum")	
+      md  =  dist(jeu, method="maximum")	
     }
     if (distanceM == 3) 
     {
-      md <- dist(jeu, method="manhattan")	
+      md  =  dist(jeu, method="manhattan")	
     }
     if (distanceM == 4) 
     {
-      md <- dist(jeu, method="canberra")	
+      md  =  dist(jeu, method="canberra")	
     }
     if (distanceM == 5) 
     {
-      md <- dist(jeu, method="binary")	
+      md  =  dist(jeu, method="binary")	
     }
     if (distanceM == 6) 
     {
-      md <- dist(jeu, method="minkowski")	
+      md  =  dist(jeu, method="minkowski")	
     }
     
     if (distanceM == 7) 
@@ -54,7 +54,7 @@ init_distances <- function(distance, diss, jeu) {
     if((distanceM==1)||(distanceM==2)|| (distanceM==3)|| (distanceM==4)|| (distanceM==5)|| (distanceM==6))
       stop("dissimilarity matrix and distance are both not null")
     else
-      md <- diss
+      md  =  diss
   }
   
   return(md)
