@@ -5,14 +5,14 @@
 #&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#
 
 
-init_methods  =  function(max_nc, min_nc, method, md) {
-  res  =  array(0, c(max_nc-min_nc+1,30))
-  x_axis  =  min_nc:max_nc
-  resCritical  =  array(0, c(max_nc-min_nc+1,4))
-  rownames(resCritical)  =  min_nc:max_nc
-  colnames(resCritical)  =  c("CritValue_Duda", "CritValue_PseudoT2", "Fvalue_Beale", "CritValue_Gap")
-  rownames(res)  =  min_nc:max_nc
-  colnames(res)  =  c("KL","CH","Hartigan","CCC","Scott","Marriot", "TrCovW", "TraceW","Friedman","Rubin","Cindex","DB",
+init_methods = function(max_nc, min_nc, method, md) {
+  res = array(0, c(max_nc-min_nc+1,30))
+  x_axis = min_nc:max_nc
+  resCritical = array(0, c(max_nc-min_nc+1,4))
+  rownames(resCritical) = min_nc:max_nc
+  colnames(resCritical) = c("CritValue_Duda", "CritValue_PseudoT2", "Fvalue_Beale", "CritValue_Gap")
+  rownames(res) = min_nc:max_nc
+  colnames(res) = c("KL","CH","Hartigan","CCC","Scott","Marriot", "TrCovW", "TraceW","Friedman","Rubin","Cindex","DB",
                      "Silhouette", "Duda", "Pseudot2", "Beale", "Ratkowsky", "Ball", "Ptbiserial", "Gap", "Frey", "McClain","Gamma", "Gplus", "Tau", "Dunn", 
                      "Hubert", "SDindex", "Dindex", "SDbw")   
   
