@@ -2,7 +2,6 @@ source("definitions.R")
 
 NbClust <-function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.nc=15, method =NULL, index = "all", alphaBeale = 0.1)
 {
-
     x<-0
     min_nc <- min.nc
     max_nc <- max.nc
