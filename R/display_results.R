@@ -2,7 +2,7 @@
 ########################                Displaying results             #########################################
 ######################################################################################################################
 
-display_results = function(res, nc, indice, resCritical, min.nc, max.nc, method, hc, bestnc) {
+display_results = function(res, nc, indice, resCritical, min.nc, max.nc, method, hc, bestnc, game) {
   if (indice < 31)
   {
     res = res[,c(indice)]
@@ -131,7 +131,7 @@ display_results = function(res, nc, indice, resCritical, min.nc, max.nc, method,
     else
     {
       set.seed(1)
-      partition = kmeans(jeu,j)$cluster
+      partition = kmeans(game,j)$cluster
     }
     
   }
@@ -151,7 +151,7 @@ display_results = function(res, nc, indice, resCritical, min.nc, max.nc, method,
     else
     {
       set.seed(1)
-      partition = kmeans(jeu,bestnc)$cluster
+      partition = kmeans(game,bestnc)$cluster
     }
     
   }
