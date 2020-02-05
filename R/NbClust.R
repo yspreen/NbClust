@@ -1,17 +1,17 @@
 source("definitions.R")
 
-NbClust  = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.nc=15, method =NULL, index = "all", alphaBeale = 0.1)
+NbClust = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.nc=15, method =NULL, index = "all", alphaBeale = 0.1)
 {
   x = 0
-  min_nc  =  min.nc
-  max_nc  =  max.nc
+  min_nc = min.nc
+  max_nc = max.nc
 
   if(is.null(method))
     stop("method is NULL")
-  method  =  pmatch(method, c("ward.D2", "single", "complete", "average",
+  method = pmatch(method, c("ward.D2", "single", "complete", "average",
                               "mcquitty", "median", "centroid", "kmeans","ward.D"))
 
-  indice  =  pmatch(index, c("kl","ch","hartigan","ccc","scott","marriot","trcovw","tracew","friedman",
+  indice = pmatch(index, c("kl","ch","hartigan","ccc","scott","marriot","trcovw","tracew","friedman",
                             "rubin","cindex","db","silhouette","duda","pseudot2","beale","ratkowsky","ball",
                             "ptbiserial","gap", "frey", "mcclain",  "gamma", "gplus", "tau", "dunn",
                             "hubert", "sdindex", "dindex", "sdbw", "all","alllong"))
@@ -51,14 +51,14 @@ NbClust  = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max
 
   else
   {
-    jeu1  =  as.matrix(data)
-    numberObsBefore  =  dim(jeu1)[1]
-    jeu  =  na.omit(jeu1) # returns the object with incomplete cases removed
-    nn  =  numberObsAfter  =  dim(jeu)[1]
-    pp  =  dim(jeu)[2]
-    TT  =  t(jeu)%*%jeu
-    sizeEigenTT  =  length(eigen(TT)$value)
-    eigenValues  =  eigen(TT/(nn-1))$value
+    jeu1 = as.matrix(data)
+    numberObsBefore = dim(jeu1)[1]
+    jeu = na.omit(jeu1) # returns the object with incomplete cases removed
+    nn = numberObsAfter = dim(jeu)[1]
+    pp = dim(jeu)[2]
+    TT = t(jeu)%*%jeu
+    sizeEigenTT = length(eigen(TT)$value)
+    eigenValues = eigen(TT/(nn-1))$value
 
     # Only for indices using vv : CCC, Scott, marriot, tracecovw, tracew, friedman, rubin
 
@@ -71,14 +71,14 @@ NbClust  = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max
           stop("The TSS matrix is indefinite. There must be too many missing values. The index cannot be calculated.")
         }
       }
-      s1  =  sqrt(eigenValues)
-      ss  =  rep(1,sizeEigenTT)
+      s1 = sqrt(eigenValues)
+      ss = rep(1,sizeEigenTT)
       for (i in 1:sizeEigenTT)
       {
         if (s1[i]!=0)
           ss[i]=s1[i]
       }
-      vv  =  prod(ss)
+      vv = prod(ss)
     }
   }
 
