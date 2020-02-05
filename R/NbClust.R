@@ -94,7 +94,7 @@ NbClust = function(data = NULL, diss=NULL, distance ="euclidean", min.nc=2, max.
   res = init_methods_res[[2]]
   resCritical = init_methods_res[[3]]
 
-  main_res = main(min_nc, max_nc, method, hc, nn, game, indice, res, md, TT, ss, vv, pi, pp, resCritical)
+  main_res = main(min_nc, max_nc, method, hc, nn, game, indice, res, md, TT, ss, vv, pp, resCritical)
   res = main_res[[1]]
 
   estimate_n_res = estimate_n(indice, min_nc, max_nc, res)
